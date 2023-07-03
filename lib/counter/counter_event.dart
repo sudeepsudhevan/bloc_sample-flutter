@@ -1,8 +1,7 @@
 part of 'counter_bloc.dart';
 
-@immutable
-abstract class CounterEvent {}
-
-class IncrementEvent extends CounterEvent {}
-
-class DecrementEvent extends CounterEvent {}
+@freezed
+class CounterEvent with _$CounterEvent {
+  const factory CounterEvent.IncrementEvent() = IncrementEvent;
+  const factory CounterEvent.DecrementEvent() = DecrementEvent;
+}

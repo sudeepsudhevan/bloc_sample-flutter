@@ -1,15 +1,24 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'counter_event.dart';
 part 'counter_state.dart';
+part 'counter_bloc.freezed.dart';
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  CounterBloc() : super(InitialState()) {
-    on<IncrementEvent>(((event, emit) => emit(CounterState(
-        count: state.count +
-            1)))); // emit is a function that takes a state and emits it to the UI
-    on<DecrementEvent>(
-        ((event, emit) => emit(CounterState(count: state.count - 1))));
+  CounterBloc() : super(CounterState.initial()) {
+    // on<CounterEvent>((event, emit) {
+    //   event.when(
+    //     IncrementEvent: () => emit(state.copyWith(count: state.count + 1)),
+    //     DecrementEvent: () => emit(state.copyWith(count: state.count - 1)),
+    //   );
+    // });
+    on<IncrementEvent>((event, emit) {
+      return emit(state.copyWith(count: state.count + 1));
+    });
+
+    on<DecrementEvent>((event, emit) {
+      return emit(state.copyWith(count: state.count - 1));
+    });
   }
 }

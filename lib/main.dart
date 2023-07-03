@@ -64,14 +64,16 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
-            onPressed: () => context.read<CounterBloc>().add(DecrementEvent()),
+            onPressed: () =>
+                context.read<CounterBloc>().add(const DecrementEvent()),
             // onPressed: () => BlocProvider.of<CounterBloc>(context).add(DecrementEvent()),
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
           const SizedBox(width: 10),
           FloatingActionButton(
-            onPressed: () => context.read<CounterBloc>().add(IncrementEvent()),
+            onPressed: () =>
+                context.read<CounterBloc>().add(const IncrementEvent()),
             // onPressed: () => BlocProvider.of<CounterBloc>(context).add(IncrementEvent()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
